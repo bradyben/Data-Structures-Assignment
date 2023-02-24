@@ -1,0 +1,60 @@
+cars_brands = {
+    "Toyota": {
+        "sedan": {"Camry": 24000, "Yaris": 15500, "Corolla": 20000},
+        "suv": {"RAV4": 26000, "Highlander": 36000, "4Runner": 50000},
+        "truck": {"Tacoma": 26000, "Tundra": 36000, "Hilux": 22000}
+    },
+    "Honda": {
+        "sedan": {"Accord": 24000, "Civic": 20000, "Insight": 23000},
+        "suv": {"HR-V": 23000, "CR-V": 25000, "Pilot": 34000},
+        "truck": {"2023 Ridgeline": 42000, "2022 Ridgeline": 40000, "2020 Ridgeline": 38000}
+    },
+    "Mercedes-Benz": {
+        "sedan": {"S-Class": 94000, "C-Class": 49000, "E-Class": 56000},
+        "suv": {"GLC": 44000, "GLC Coupe": 51000, "AMG GLA35": 47000},
+        "truck": {"Atego": 76000, "Arocs": 93000, "Zetros": 162000}
+    },
+    "Hyundai": {
+        "sedan": {"Sonata": 22000, "Elantra": 19000, "Accent": 16000},
+        "suv": {"Tucson": 24000, "Palisade": 33000},
+        "truck": {"Porter": 17000, "H-100": 15000}
+    },
+    "Ford": {
+        "sedan": {"Fusion": 24000, "Taurus": 28000},
+        "suv": {"Escape": 25000, "Explorer": 33000},
+        "truck": {"F-150": 28000, "Ranger": 24000}
+    },
+    "Nissan": {
+        "sedan": {"Altima": 25000, "Maxima": 35000},
+        "suv": {"Rogue": 26000, "Pathfinder": 31000},
+        "truck": {"Frontier": 28000, "Titan": 38000}
+    }
+}
+
+# get user input for brand and car type
+print("Welcome to brady_ben's Car Dealership")
+Opinion = input("Would you like to proceed?(yes/no)")
+if Opinion=='yes':
+    print("These are the available car brands \n 1. Toyota \n 2. Honda \n 3. Mercedes-Benz \n 4. Hyundai \n 5. Ford \n 6. Nissan")
+elif Opinion=='no':
+    print('Thank you') 
+brand = input("Enter car brand: ")
+car_type = input("Enter car type (sedan, suv, truck): ")
+
+# check if the brand is valid
+if brand not in cars_brands:
+    print("Not Available")
+else:
+    # ask the customer which specific model they want
+    print(f"Here are the available {car_type}s for {brand}:")
+    for model in cars_brands[brand][car_type]:
+        print(f"- {model}")
+    model = input("Which model do you want?: ")
+
+    # check if the model is valid
+    if model not in cars_brands[brand][car_type]:
+        print("Invalid model")
+    else:
+        # display the price
+        price = cars_brands[brand][car_type][model]
+        print(f"The price of the {model} is ${price}")
